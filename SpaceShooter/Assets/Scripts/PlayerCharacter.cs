@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private int _health = 500;
+    private int maxHealth = 1000;
+
+    public void Hurt(int damage)
     {
-        
+        _health -= damage;//уменьшение здоровья игрока
+        if (_health <= 0)
+        {
+            SceneManager.LoadScene("SampleScene");//Перезагрузить сцену SamleScene
+        }
+        Debug.Log("Health: " + _health);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
