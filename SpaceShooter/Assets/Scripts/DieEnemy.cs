@@ -7,6 +7,11 @@ public class DieEnemy : MonoBehaviour
     public void ReactToHit()
     {//метод, вызванный сценарием стрельбы
         StartCoroutine(Die());
+        AIEnemy behavior = GetComponent<AIEnemy>();
+        if (behavior != null)
+        {//проверяем, есть ли у объекта скрипт  AIEnemy 
+            behavior.SetAlive(false);
+        }
     }
 
     private IEnumerator Die()
