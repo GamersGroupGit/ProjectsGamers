@@ -16,7 +16,10 @@ public GameObject enemyPrefab;//Открытая переменная для с�
             _enemy = Instantiate(enemyPrefab) as GameObject; //метод копирующий объект-шаблон
             _enemy.transform.position = gameObject.transform.position;
             player = GameObject.FindWithTag("Player");//находим объект с тегом “Player”
-
+            _enemy.gameObject.GetComponent<AIEnemy>().target = player.transform;
+            _enemy.gameObject.GetComponent<AIEnemy>().player = player.GetComponent<PlayerCharacter>();
+            float angel = Random.Range(0, 360);//случайный число в переменную
+            _enemy.transform.Rotate(0, angel, 0);//случайный поворот
         }
     }
 }
